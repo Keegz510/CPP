@@ -1,3 +1,5 @@
-﻿  GridController.cpp
-C:\Users\KAMil\Documents\AIE\CPP\TicTacToe\GridController.cpp(42,61): warning C4390: ';': empty controlled statement found; is this the intent?
+﻿  InGameState.cpp
+  MainMenu.cpp
+  PlayerController.cpp
+  Generating Code...
   TicTacToe.vcxproj -> C:\Users\KAMil\Documents\AIE\CPP\TicTacToe\x64\Debug\TicTacToe.exe

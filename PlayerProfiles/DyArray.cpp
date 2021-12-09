@@ -66,23 +66,6 @@ void DyArray::SortScoreAscending()
 	}
 }
 
-void DyArray::SortScoreDescending()
-{
-	for (int i = 0; i < currentSize - 1; ++i)
-	{
-		int score;
-		for (int j = i; j < currentSize - 1; ++j)
-		{
-			if (profiles[j + 1].GetScore() > profiles[j].GetScore())
-			{
-				Profile* temp = &profiles[j];
-				profiles[j] = profiles[j + 1];
-				profiles[j + 1] = *temp;
-			}
-
-		}
-	}
-}
 
 void DyArray::SortByID()
 {
@@ -151,6 +134,14 @@ void DyArray::LoadProfiles()
 		
 	}
 
+}
+
+void DyArray::DisplayProfiles()
+{
+	for (int i = 0; i < Count(); ++i)
+	{
+		profiles[i].Display();
+	}
 }
 
 /// <summary>

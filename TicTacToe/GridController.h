@@ -5,6 +5,7 @@
 #pragma region Forward Declarations
 
 class PlayerController;
+class InGameState;
 
 #pragma endregion
 
@@ -37,7 +38,7 @@ class GridController
 public:
 	std::string grid[3][3];
 
-	GridController();
+	GridController(InGameState* state);
 	~GridController(){}
 
 	// Draws the grid object
@@ -59,6 +60,7 @@ public:
 	
 
 private:
-	std::string validInput[18];
+	std::string validInput[18];				// Array of valid inputs
+	InGameState* state;			// Reference to the in game state
 };
 

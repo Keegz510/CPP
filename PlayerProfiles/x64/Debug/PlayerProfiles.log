@@ -1,2 +1,9 @@
-﻿  Profile.cpp
+﻿  AppController.cpp
+  DyArray.cpp
+C:\Users\KAMil\Documents\AIE\CPP\PlayerProfiles\DyArray.cpp(54,7): warning C4101: 'score': unreferenced local variable
+C:\Users\KAMil\Documents\AIE\CPP\PlayerProfiles\DyArray.cpp(74,7): warning C4101: 'score': unreferenced local variable
+  EditProfileState.cpp
+  NewProfileState.cpp
+  ViewScoresState.cpp
+  Generating Code...
   PlayerProfiles.vcxproj -> C:\Users\KAMil\Documents\AIE\CPP\PlayerProfiles\x64\Debug\PlayerProfiles.exe

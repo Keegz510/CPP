@@ -9,7 +9,8 @@ InGameState::InGameState()
 	playersTurn = 1;
 	player1 = new PlayerController("X", this);
 	player2 = new PlayerController("O", this);
-	grid = new GridController();
+	grid = new GridController(this);
+	system("cls");
 	Draw();
 
 }

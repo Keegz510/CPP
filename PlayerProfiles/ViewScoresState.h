@@ -11,5 +11,7 @@ public:
 
 private:
 	class DyArray* profiles;
+
+	bool displayID = true;
 };
 

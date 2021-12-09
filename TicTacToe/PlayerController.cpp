@@ -38,10 +38,6 @@ void PlayerController::TakeTurn()
 			{
 				state->GameOver(true);
 			}
-			else
-			{
-				state->SwitchTurn();
-			}
 			
 			break;
 		}

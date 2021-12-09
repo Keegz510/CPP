@@ -144,7 +144,47 @@ DataFile::Record* DataFile::Load(int recordIndex)
 		infile.read((char*)&recordCount, sizeof(int));
 		if (recordIndex <= recordCount)
 		{
+			infile.seekg(sizeof(int), std::ios::beg);			// Ensure we start after the record total
+			for (int i = 0; i < recordIndex - 1; ++i)
+			{
+				int nameSize = 0;
+				int ageSize = 0;
+				int imageSize = 0;
+
+				infile.read((char*)&nameSize, sizeof(int));
+				infile.read((char*)&ageSize, sizeof(int));
+				infile.read((char*)&imageSize, sizeof(int));
+				infile.seekg(nameSize + imageSize + ageSize, std::ios::cur);
+			}
 			
+			int nameSize = 0;
+			int ageSize = 0;
+			int width = 0, height = 0, format = 0, imageSize = 0;
+
+			infile.read((char*)&width, sizeof(int));
+			infile.read((char*)&height, sizeof(int));
+
+			imageSize = sizeof(Color) * width * height;
+
+			infile.read((char*)&nameSize, sizeof(int));
+			infile.read((char*)&ageSize, sizeof(int));
+
+			char* imgdata = new char[imageSize];
+			infile.read(imgdata, imageSize);
+
+			Image img = LoadImageEx((Color*)imgdata, width, height);
+			char* name = new char[nameSize];
+			int age = 0;
+
+			infile.read((char*)name, nameSize);
+			infile.read((char*)&age, ageSize);
+
+			Record* r = new Record();
+			r->image = img;
+			r->name = string(name);
+			r->age = age;
+			return r;
+
 		}
 	}
 

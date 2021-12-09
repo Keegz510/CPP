@@ -28,7 +28,15 @@ void ViewScoresState::Draw()
 		// If we have profiles loop through them and update them
 		for (int i = 0; i < profiles->Count(); ++i)
 		{
-			profiles->GetProfile(i)->Display();
+			if (displayID)
+			{
+				profiles->GetProfile(i)->Display();
+			}
+			else
+			{
+				profiles->DisplayProfiles();
+			}
+			
 		}
 	}
 	else
@@ -39,7 +47,7 @@ void ViewScoresState::Draw()
 	
 	// PROMPT FOR INPUT
 	std::cout << "============================" << std::endl;
-	std::cout << "X: Sort Score Ascending | C: Sort Score Descending | Z: Sort By Added Date | A: Main Menu" << std::endl;
+	std::cout << "X: Sort Score Ascending | Z: Sort By Added Date | A: Main Menu" << std::endl;
 	std::cout << "Enter Action: ";
 	Input();
 }
@@ -58,14 +66,12 @@ void ViewScoresState::Input()
 		case 'x':
 		case 'X':
 			profiles->SortScoreAscending();
-			break;
-		case 'c':
-		case 'C':
-			profiles->SortScoreDescending();
+			displayID = false;
 			break;
 		case 'z':
 		case 'Z':
 			profiles->SortByID();
+			displayID = true;
 			break;
 	}
 }

@@ -14,12 +14,14 @@ public:
 
 	// === SORTING === //
 	void SortScoreAscending();
-	void SortScoreDescending();
 	void SortByID();
 
 	// === SAVE & LOAD === //
 	void SaveProfiles();
 	void LoadProfiles();
+
+	// === DISPLAYING === //
+	void DisplayProfiles();
 
 
 	bool Contains(Profile* profile);

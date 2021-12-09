@@ -1,9 +1,11 @@
 #include "GridController.h"
 #include "PlayerController.h"
+#include "InGameState.h"
 #include <iostream>
 
-GridController::GridController()
+GridController::GridController(InGameState* state)
 {
+	this->state = state;
 	for (auto x = 0; x < 3; x++)
 	{
 		for (auto y = 0; y < 3; y++)
@@ -39,9 +41,10 @@ bool GridController::AddObjectToGrid(const PlayerController* player, GridPositio
 
 	// Check if the grid position is empty and can be added,
 	// If it is than add the object and return true
-	if (grid[pos.x][pos.y] != "X" || grid[pos.x][pos.y] != "O");
+	if (grid[pos.x][pos.y] != "X" && grid[pos.x][pos.y] != "O")
 	{
 		grid[pos.x][pos.y] = player->GetObject();
+		state->SwitchTurn();
 		return true;
 	}
 

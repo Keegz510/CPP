@@ -29,6 +29,7 @@ void DyArray::Add(Profile* profile)
 	profiles[currentSize] = *profile;			// Add the new profile
 	currentSize += 1;							// Increase the size of the array
 	ResizeArray();								// resize the tree to fit all data
+	SaveProfiles();
 }
 
 /// <summary>

@@ -1,12 +1,2 @@
-﻿  DataFile.cpp
-C:\Users\KAMil\Documents\AIE\CPP\Debug\RaylibStarterCPP\DataFile.cpp(58,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\KAMil\Documents\AIE\CPP\Debug\RaylibStarterCPP\DataFile.cpp(69,43): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  main.cpp
-  Generating Code...
-raylib.lib(textures.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(textures.obj)' or at 'C:\Users\KAMil\Documents\AIE\CPP\Debug\bin\x64\Debug\raylib.pdb'; linking object as if no debug info
-raylib.lib(core.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(core.obj)' or at 'C:\Users\KAMil\Documents\AIE\CPP\Debug\bin\x64\Debug\raylib.pdb'; linking object as if no debug info
-raylib.lib(text.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(text.obj)' or at 'C:\Users\KAMil\Documents\AIE\CPP\Debug\bin\x64\Debug\raylib.pdb'; linking object as if no debug info
-raylib.lib(utils.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(utils.obj)' or at 'C:\Users\KAMil\Documents\AIE\CPP\Debug\bin\x64\Debug\raylib.pdb'; linking object as if no debug info
-raylib.lib(rglfw.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(rglfw.obj)' or at 'C:\Users\KAMil\Documents\AIE\CPP\Debug\bin\x64\Debug\raylib.pdb'; linking object as if no debug info
-raylib.lib(shapes.obj) : warning LNK4099: PDB 'raylib.pdb' was not found with 'raylib.lib(shapes.obj)' or at 'C:\Users\KAMil\Documents\AIE\CPP\Debug\bin\x64\Debug\raylib.pdb'; linking object as if no debug info
+﻿  main.cpp
   RaylibStarterCPP.vcxproj -> C:\Users\KAMil\Documents\AIE\CPP\Debug\bin\x64\Debug\RaylibStarterCPP.exe

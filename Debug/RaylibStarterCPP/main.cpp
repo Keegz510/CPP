@@ -21,6 +21,7 @@
 
 #include "raylib.h"
 #include "DataFile.h"
+#include "../../RaylibStarterCPP/Offsets.h"
 
 int main(int argc, char* argv[])
 {
@@ -31,13 +32,15 @@ int main(int argc, char* argv[])
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
+    Offsets offsets("npc_data.dat");
+
     DataFile data;
     int currentRecordIdx = 0;
 
-    data.Load("npc_data.dat");
+    //data.Load("npc_data.dat");
 
     // Gets the data record we want to load
-    DataFile::Record* currentRecord = data.GetRecord(currentRecordIdx);
+    DataFile::Record* currentRecord = data.GetRecord(currentRecordIdx, offsets);
     // Loads the texture for the data record above
     Texture2D recordTexture = LoadTextureFromImage(currentRecord->image);
 
@@ -62,7 +65,7 @@ int main(int argc, char* argv[])
             if (currentRecordIdx < 0) currentRecordIdx = 0;
             
             // Get the new record
-            currentRecord = data.GetRecord(currentRecordIdx);
+            currentRecord = data.GetRecord(currentRecordIdx, offsets);
             // Load the texture for the new record
             recordTexture = LoadTextureFromImage(currentRecord->image);
         }
@@ -80,7 +83,7 @@ int main(int argc, char* argv[])
             }
 
             // Get the new record
-            currentRecord = data.GetRecord(currentRecordIdx);
+            currentRecord = data.GetRecord(currentRecordIdx, offsets);
             // Update the texture that we are displaying
             recordTexture = LoadTextureFromImage(currentRecord->image);
         }

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="DataFile.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Offsets.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataFile.h" />

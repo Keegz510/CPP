@@ -1,10 +1,12 @@
 #include "DataFile.h"
 #include <fstream>
+#include "Offsets.h"
 using namespace std;
 
 DataFile::DataFile()
 {
 	recordCount = 0;
+
 }
 
 DataFile::~DataFile()
@@ -40,8 +42,44 @@ void DataFile::AddRecord(string imageFilename, string name, int age)
 /// </summary>
 /// <param name="index">Index of the character to get</param>
 /// <returns>the request record at the index</returns>
-DataFile::Record* DataFile::GetRecord(int index)
+DataFile::Record* DataFile::GetRecord(int index, Offsets offset)
 {
+	ifstream infile("npc_data.dat", ios::binary);
+	if (infile.is_open())
+	{
+
+		infile.seekg(offset[index]);
+
+		int nameSize = 0;
+		int ageSize = 0;
+		int width = 0, height = 0, format = 0, imageSize = 0;
+
+		infile.read((char*)&width, sizeof(int));
+		infile.read((char*)&height, sizeof(int));
+
+		imageSize = sizeof(Color) * width * height;
+
+		infile.read((char*)&nameSize, sizeof(int));
+		infile.read((char*)&ageSize, sizeof(int));
+
+		char* imgdata = new char[imageSize];
+		infile.read(imgdata, imageSize);
+
+		Image img = LoadImageEx((Color*)imgdata, width, height);
+		char* name = new char[nameSize];
+		int age = 0;
+
+		infile.read((char*)name, nameSize);
+		infile.read((char*)&age, ageSize);
+
+		Record* r = new Record();
+		r->image = img;
+		r->name = string(name);
+		r->age = age;
+
+		infile.close();
+		return r;
+	}
 	return records[index];
 }
 
@@ -140,52 +178,7 @@ DataFile::Record* DataFile::Load(int recordIndex)
 
 	if (infile.is_open())
 	{
-		// Count how many records
-		infile.read((char*)&recordCount, sizeof(int));
-		if (recordIndex <= recordCount)
-		{
-			infile.seekg(sizeof(int), std::ios::beg);			// Ensure we start after the record total
-			for (int i = 0; i < recordIndex - 1; ++i)
-			{
-				int nameSize = 0;
-				int ageSize = 0;
-				int imageSize = 0;
-
-				infile.read((char*)&nameSize, sizeof(int));
-				infile.read((char*)&ageSize, sizeof(int));
-				infile.read((char*)&imageSize, sizeof(int));
-				infile.seekg(nameSize + imageSize + ageSize, std::ios::cur);
-			}
-			
-			int nameSize = 0;
-			int ageSize = 0;
-			int width = 0, height = 0, format = 0, imageSize = 0;
-
-			infile.read((char*)&width, sizeof(int));
-			infile.read((char*)&height, sizeof(int));
-
-			imageSize = sizeof(Color) * width * height;
-
-			infile.read((char*)&nameSize, sizeof(int));
-			infile.read((char*)&ageSize, sizeof(int));
-
-			char* imgdata = new char[imageSize];
-			infile.read(imgdata, imageSize);
-
-			Image img = LoadImageEx((Color*)imgdata, width, height);
-			char* name = new char[nameSize];
-			int age = 0;
-
-			infile.read((char*)name, nameSize);
-			infile.read((char*)&age, ageSize);
-
-			Record* r = new Record();
-			r->image = img;
-			r->name = string(name);
-			r->age = age;
-			return r;
-
-		}
+		
 	}
 
 	infile.close();
@@ -205,3 +198,4 @@ void DataFile::Clear()
 	records.clear();
 	recordCount = 0;
 }
+

@@ -6,6 +6,8 @@
 
 using namespace std;
 
+class Offsets;
+
 class DataFile
 {
 public:
@@ -28,7 +30,7 @@ public:
 	// Add a new record
 	void AddRecord(string imageFilename, string name, int age);
 	// Get a record
-	Record* GetRecord(int index);
+	Record* GetRecord(int index, Offsets offset);
 
 	// Return how many records there are
 	int GetRecordCount() { return recordCount; };
